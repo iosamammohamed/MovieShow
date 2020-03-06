@@ -50,7 +50,7 @@ class FavoritesAdapetr() : RecyclerView.Adapter<FavoritesAdapetr.FavoritesViewHo
             single_favorite_movie_show_details.setOnClickListener{
                 var intent = Intent(context, SingleMovieActivity::class.java)
                 intent.putExtra(SingleMovieActivity.movieTag, movie)
-                (context as Activity).startActivityForResult(intent, FavoritesFragment.RETURNED_TO_FAV_FROM_SINGLE)
+                context.startActivity(intent)
             }
 
             setOnClickListener {

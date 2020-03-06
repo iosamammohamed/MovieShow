@@ -44,11 +44,13 @@ class MainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemS
     }
 
 
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+ /*   override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         if(requestCode == FavoritesFragment.RETURNED_TO_FAV_FROM_SINGLE && resultCode == Activity.RESULT_OK){
             this.favoritesFragment.refreshFavorites()
         }
     }
+*/
+
 
 }

@@ -1,10 +1,13 @@
 package com.osama.movieshow.data.favorites
 
 import android.content.Context
+import androidx.lifecycle.LiveData
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.osama.movieshow.data.movie.Movie
+
+import io.reactivex.Observable
 
 @Database(entities = arrayOf(Movie::class), version = 1, exportSchema = false)
 abstract class DataBase : RoomDatabase() {
@@ -26,8 +29,8 @@ abstract class DataBase : RoomDatabase() {
 
 
 
-    fun getAllFavorites():List<Movie>{
-        return FavDao().getAllFavorites().reversed()
+    fun getAllFavorites(): Observable<List<Movie>> {
+        return FavDao().getAllFavorites()
     }
 
 }

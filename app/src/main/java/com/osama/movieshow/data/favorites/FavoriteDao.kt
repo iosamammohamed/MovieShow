@@ -3,7 +3,9 @@ package com.osama.movieshow.data.favorites
 import androidx.lifecycle.LiveData
 import androidx.room.*
 import com.osama.movieshow.data.movie.Movie
-import kotlinx.coroutines.flow.Flow
+import io.reactivex.Flowable
+import io.reactivex.Observable
+import io.reactivex.Single
 
 
 @Dao
@@ -26,6 +28,6 @@ interface FavoriteDao {
     fun getFavoritesCount():Int
 
     @Query("select * from favorites")
-    fun getAllFavorites():List<Movie>
+    fun getAllFavorites(): Observable<List<Movie>>
 
 }

@@ -6,7 +6,6 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.osama.movieshow.data.favorites.DataBase
 import com.osama.movieshow.data.movie.Movie
-import io.reactivex.schedulers.Schedulers
 import kotlinx.coroutines.*
 import kotlin.random.Random
 

@@ -9,7 +9,6 @@ import android.view.View.VISIBLE
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProviders
 import com.bumptech.glide.Glide
 import com.osama.movieshow.R
 import com.osama.movieshow.data.movie.Movie
@@ -53,7 +52,7 @@ class SingleMovieActivity : AppCompatActivity() {
     }
 
     private fun changeFavIcon(isFav:Boolean){
-        if(isFav!!){
+        if(isFav){
             single_movie_favorite_border.visibility = GONE
             single_movie_favorite_fill.visibility = VISIBLE
         }
@@ -86,16 +85,15 @@ class SingleMovieActivity : AppCompatActivity() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean { // handle arrow click here
         if (item.getItemId() === android.R.id.home) {
-            setResult(RESULT_OK)
             finish() // close this activity and return to preview activity (if there is any)
         }
         return super.onOptionsItemSelected(item)
     }
-
+/*
     override fun onBackPressed() {
         setResult(RESULT_OK)
         super.onBackPressed()
-    }
+    }*/
 
 
 }
