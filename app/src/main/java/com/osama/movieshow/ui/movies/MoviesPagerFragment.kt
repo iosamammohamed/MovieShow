@@ -1,20 +1,18 @@
-package com.osama.movieshow.ui.movies.fragments
+package com.osama.movieshow.ui.movies
 
 
 import android.os.Bundle
-import android.os.Parcelable
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
-import androidx.fragment.app.FragmentStatePagerAdapter
 import com.osama.movieshow.R
-import com.osama.movieshow.ui.movies.fragments.latest.LatestTitleMoviesFragment
-import com.osama.movieshow.ui.movies.fragments.popular.PopularTitleMoviesFragment
-import com.osama.movieshow.ui.movies.fragments.toprated.TopRatedTitleMoviesFragment
-import com.osama.movieshow.ui.movies.fragments.upcoming.UpComingTitleMoviesFragment
+import com.osama.movieshow.ui.movies.fragments.LatestBaseMoviesFragment
+import com.osama.movieshow.ui.movies.fragments.PopularBaseMoviesFragment
+import com.osama.movieshow.ui.movies.fragments.TopRatedBaseMoviesFragment
+import com.osama.movieshow.ui.movies.fragments.UpComingBaseMoviesFragment
 import kotlinx.android.synthetic.main.fragment_movies_pager.*
 
 
@@ -23,11 +21,15 @@ import kotlinx.android.synthetic.main.fragment_movies_pager.*
  */
 class MoviesPagerFragment : Fragment() {
 
-    lateinit var moviesAdapter:MoviesViewPagerAdapter
-    val popularTitleMoviesFragment = PopularTitleMoviesFragment()
-    val latestTitleMoviesFragment = LatestTitleMoviesFragment()
-    val topRatedTitleMoviesFragment = TopRatedTitleMoviesFragment()
-    val upComingTitleMoviesFragment = UpComingTitleMoviesFragment()
+    lateinit var moviesAdapter: MoviesViewPagerAdapter
+    val popularTitleMoviesFragment =
+        PopularBaseMoviesFragment()
+    val latestTitleMoviesFragment =
+        LatestBaseMoviesFragment()
+    val topRatedTitleMoviesFragment =
+        TopRatedBaseMoviesFragment()
+    val upComingTitleMoviesFragment =
+        UpComingBaseMoviesFragment()
 
 
 
@@ -46,7 +48,10 @@ class MoviesPagerFragment : Fragment() {
 
 
     private fun initTabbedViewPager(){
-        moviesAdapter =  MoviesViewPagerAdapter(childFragmentManager)
+        moviesAdapter =
+            MoviesViewPagerAdapter(
+                childFragmentManager
+            )
         moviesAdapter.add(popularTitleMoviesFragment)
         moviesAdapter.add(latestTitleMoviesFragment)
         moviesAdapter.add(topRatedTitleMoviesFragment)
@@ -57,12 +62,12 @@ class MoviesPagerFragment : Fragment() {
 
     class MoviesViewPagerAdapter(fragmentManager: FragmentManager) : FragmentPagerAdapter(fragmentManager, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT){
 
-        var movieFragments = ArrayList<TitleMoviesFragment>()
+        var movieFragments = ArrayList<BaseMoviesFragment>()
 
 
 
-        fun add(fragment:TitleMoviesFragment){
-            this.movieFragments.add(fragment)
+        fun add(fragmentBase: BaseMoviesFragment){
+            this.movieFragments.add(fragmentBase)
         }
 
         override fun getItem(position: Int): Fragment {

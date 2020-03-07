@@ -39,4 +39,10 @@ object MovieApiClient {
     }
 
 
+    fun getMovies(url:String):  Call<JsonObject>{
+        return this.movieApiInterface.getMovies(url)
+
+    }
+
+
 }

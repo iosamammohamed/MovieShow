@@ -4,6 +4,7 @@ import com.google.gson.JsonObject
 import com.osama.movieshow.utils.Urls
 import retrofit2.Call
 import retrofit2.http.GET
+import retrofit2.http.Path
 
 interface MovieApiInterface {
 
@@ -19,6 +20,7 @@ interface MovieApiInterface {
     @GET("${Urls.upComing}${Urls.apiKey}")
     fun getUpcomingMovies(): Call<JsonObject>
 
-
+    @GET("{url}${Urls.apiKey}")
+    fun getMovies(@Path("url", encoded = true) url:String): Call<JsonObject>
 
 }

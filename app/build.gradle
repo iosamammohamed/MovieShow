@@ -96,6 +96,12 @@ dependencies {
     implementation 'com.android.support:multidex:1.0.3'
 
 
+    //Recycler States
+    def recycler_sates_version = "1.2"
+    implementation "com.rockerhieu:rv-adapter-states:$recycler_sates_version"
+    
+
+
 
 
 }

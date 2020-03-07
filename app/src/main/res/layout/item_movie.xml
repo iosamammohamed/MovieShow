@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ImageView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/movie_logo"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="300dp"
-    android:scaleType="fitXY"/>
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:elevation="8dp"
+    android:layout_margin="4dp"
+    app:cardCornerRadius="5dp"
+    android:outlineSpotShadowColor="@color/colorAccent">
+
+
+    <ImageView android:id="@+id/movie_logo"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:scaleType="fitXY"/>
+
+
+</androidx.cardview.widget.CardView>

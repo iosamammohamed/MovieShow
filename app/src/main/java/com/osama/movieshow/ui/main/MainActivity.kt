@@ -1,7 +1,5 @@
 package com.osama.movieshow.ui.main
 
-import android.app.Activity
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
@@ -9,7 +7,7 @@ import androidx.fragment.app.Fragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.osama.movieshow.R
 import com.osama.movieshow.ui.favorite.FavoritesFragment
-import com.osama.movieshow.ui.movies.fragments.MoviesPagerFragment
+import com.osama.movieshow.ui.movies.MoviesPagerFragment
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemSelectedListener {
