@@ -19,24 +19,6 @@ object MovieApiClient {
         movieApiInterface = retrofit.create(MovieApiInterface::class.java)
     }
 
-    fun getPopularMovies(): Call<JsonObject>{
-        return this.movieApiInterface.getPopularMovies()
-    }
-
-    fun getLatestMovies(): Call<JsonObject>{
-        return this.movieApiInterface.getLatestMovies()
-
-    }
-
-    fun getUpcomingMovies():Call<JsonObject>{
-        return this.movieApiInterface.getUpcomingMovies()
-
-    }
-
-    fun getTopRatedMovies():  Call<JsonObject>{
-        return this.movieApiInterface.getTopRatedMovies()
-
-    }
 
 
     fun getMovies(url:String):  Call<JsonObject>{

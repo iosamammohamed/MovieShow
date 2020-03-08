@@ -9,10 +9,10 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
 import com.osama.movieshow.R
-import com.osama.movieshow.ui.movies.fragments.LatestBaseMoviesFragment
-import com.osama.movieshow.ui.movies.fragments.PopularBaseMoviesFragment
-import com.osama.movieshow.ui.movies.fragments.TopRatedBaseMoviesFragment
-import com.osama.movieshow.ui.movies.fragments.UpComingBaseMoviesFragment
+import com.osama.movieshow.ui.movies.fragments.LatestMoviesFragment
+import com.osama.movieshow.ui.movies.fragments.PopularMoviesFragment
+import com.osama.movieshow.ui.movies.fragments.TopRatedMoviesFragment
+import com.osama.movieshow.ui.movies.fragments.UpComingMoviesFragment
 import kotlinx.android.synthetic.main.fragment_movies_pager.*
 
 
@@ -23,13 +23,13 @@ class MoviesPagerFragment : Fragment() {
 
     lateinit var moviesAdapter: MoviesViewPagerAdapter
     val popularTitleMoviesFragment =
-        PopularBaseMoviesFragment()
+        PopularMoviesFragment()
     val latestTitleMoviesFragment =
-        LatestBaseMoviesFragment()
+        LatestMoviesFragment()
     val topRatedTitleMoviesFragment =
-        TopRatedBaseMoviesFragment()
+        TopRatedMoviesFragment()
     val upComingTitleMoviesFragment =
-        UpComingBaseMoviesFragment()
+        UpComingMoviesFragment()
 
 
 

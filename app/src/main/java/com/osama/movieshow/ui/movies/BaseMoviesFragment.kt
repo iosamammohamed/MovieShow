@@ -14,7 +14,6 @@ import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.osama.movieshow.R
 import com.osama.movieshow.data.movie.Movie
 import com.osama.movieshow.utils.RecyclerViewUtils
-import com.osama.movieshow.utils.adapters.MoviesAdapter
 import com.rockerhieu.rvadapter.states.StatesRecyclerViewAdapter
 import kotlinx.android.synthetic.main.fragment_movies.*
 

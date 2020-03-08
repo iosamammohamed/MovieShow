@@ -1,7 +1,5 @@
-package com.osama.movieshow.utils.adapters
+package com.osama.movieshow.ui.favorite
 
-import android.app.Activity
-import android.content.Context
 import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
@@ -10,7 +8,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.osama.movieshow.R
 import com.osama.movieshow.data.movie.Movie
-import com.osama.movieshow.ui.favorite.FavoritesFragment
 import com.osama.movieshow.ui.singlemovie.SingleMovieActivity
 import com.osama.movieshow.utils.Urls
 import kotlinx.android.synthetic.main.item_favorite_movie.view.*

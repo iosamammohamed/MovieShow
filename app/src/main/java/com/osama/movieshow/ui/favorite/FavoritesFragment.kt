@@ -10,7 +10,6 @@ import androidx.lifecycle.Observer
 import com.osama.movieshow.R
 import com.osama.movieshow.data.movie.Movie
 import com.osama.movieshow.utils.RecyclerViewUtils
-import com.osama.movieshow.utils.adapters.FavoritesAdapetr
 import kotlinx.android.synthetic.main.fragment_favorites.*
 
 class FavoritesFragment : Fragment() {

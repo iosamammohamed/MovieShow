@@ -1,4 +1,4 @@
-package com.osama.movieshow.utils.adapters
+package com.osama.movieshow.ui.movies
 
 import android.content.Intent
 import android.view.LayoutInflater
