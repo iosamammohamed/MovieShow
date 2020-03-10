@@ -52,35 +52,12 @@ open class BaseMoviesFragment(val title:String, val url:String) : Fragment() {
         super.onActivityCreated(savedInstanceState)
 
         setupRecycler()
-
-
-
         viewModelN.url = url
-        viewModelN.isLoading.observe(viewLifecycleOwner, object: Observer<Boolean>{
-            override fun onChanged(isLoading: Boolean?) {
-                Log.d("hhhhhhhhhh loading = ", isLoading.toString())
-                if (isLoading!!)
-                   statesRecyclerViewAdapter.setState(StatesRecyclerViewAdapter.STATE_LOADING)
-                else
-                    swipe_refresh_layout.isRefreshing = false
-            }
-        })
-        viewModelN.isEmpty.observe(viewLifecycleOwner, object: Observer<Boolean>{
-            override fun onChanged(isEmpty: Boolean?) {
-                Log.d("hhhhhhhhhhhhh empty = ", isEmpty.toString())
-                if (isEmpty!!)
-                   statesRecyclerViewAdapter.setState(StatesRecyclerViewAdapter.STATE_EMPTY)
-            }
-        })
-
+        loadingObserve()
+        dataObserve()
+        emptyDataObserve()
         viewModelN.getMovies()
-        viewModelN.movies.observe(viewLifecycleOwner, object: Observer<List<Movie>> {
-            override fun onChanged(movies: List<Movie>?) {
-                statesRecyclerViewAdapter.setState(StatesRecyclerViewAdapter.STATE_NORMAL)
-                moviesAdapter.setData(movies!!)
-            }
 
-        })
 
         swipe_refresh_layout.setOnRefreshListener {
             refreshData()
@@ -97,6 +74,39 @@ open class BaseMoviesFragment(val title:String, val url:String) : Fragment() {
         CenterViewHolder(loadingView)
         CenterViewHolder(emptyView)
         recycler.adapter = statesRecyclerViewAdapter
+    }
+
+
+    fun dataObserve(){
+        viewModelN.movies.observe(viewLifecycleOwner, object: Observer<List<Movie>> {
+            override fun onChanged(movies: List<Movie>?) {
+                statesRecyclerViewAdapter.setState(StatesRecyclerViewAdapter.STATE_NORMAL)
+                moviesAdapter.setData(movies!!)
+            }
+
+        })
+    }
+
+    fun loadingObserve(){
+        viewModelN.isLoading.observe(viewLifecycleOwner, object: Observer<Boolean>{
+            override fun onChanged(isLoading: Boolean?) {
+                Log.d("hhhhhhhhhh loading = ", isLoading.toString())
+                if (isLoading!!)
+                    statesRecyclerViewAdapter.setState(StatesRecyclerViewAdapter.STATE_LOADING)
+                else
+                    swipe_refresh_layout.isRefreshing = false
+            }
+        })
+    }
+
+    fun emptyDataObserve(){
+        viewModelN.isEmpty.observe(viewLifecycleOwner, object: Observer<Boolean>{
+            override fun onChanged(isEmpty: Boolean?) {
+                Log.d("hhhhhhhhhhhhh empty = ", isEmpty.toString())
+                if (isEmpty!!)
+                    statesRecyclerViewAdapter.setState(StatesRecyclerViewAdapter.STATE_EMPTY)
+            }
+        })
     }
 
     fun refreshData(){

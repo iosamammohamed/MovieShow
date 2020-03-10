@@ -8,6 +8,10 @@ import androidx.room.RoomDatabase
 import com.osama.movieshow.data.movie.Movie
 
 import io.reactivex.Observable
+import io.reactivex.Observer
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.disposables.CompositeDisposable
+import io.reactivex.schedulers.Schedulers
 
 @Database(entities = arrayOf(Movie::class), version = 1, exportSchema = false)
 abstract class DataBase : RoomDatabase() {
@@ -29,8 +33,18 @@ abstract class DataBase : RoomDatabase() {
 
 
 
-    fun getAllFavorites(): Observable<List<Movie>> {
-        return FavDao().getAllFavorites()
+    fun getAllFavorites(observer: Observer<List<Movie>>) {
+        CompositeDisposable().add(
+            FavDao().getAllFavorites()
+                .map {
+                    it.reversed()
+                }
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe {
+                    observer.onNext(it)
+                }
+        )
     }
 
 }
