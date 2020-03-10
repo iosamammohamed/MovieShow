@@ -5,6 +5,8 @@ import androidx.lifecycle.ViewModel
 import com.osama.movieshow.data.movie.Movie
 import com.osama.movieshow.data.movie.MovieApiClient
 import com.osama.movieshow.data.movie.MovieCallback
+import io.reactivex.Observer
+import io.reactivex.disposables.Disposable
 
 class MoviesViewModel() : ViewModel() {
 
@@ -20,18 +22,18 @@ class MoviesViewModel() : ViewModel() {
 
     fun getMovies(){
         isLoading.value = true
-        MovieApiClient.getMovies(url, object: MovieCallback{
-            override fun onSuccess(data: List<Movie>) {
-                println("llllllllllllllll success")
+        MovieApiClient.getMovies(url, object: Observer<List<Movie>>{
+            override fun onSubscribe(d: Disposable) {}
+            override fun onNext(movieList: List<Movie>) {
                 isLoading.value = false
-                isEmpty.value = false
-                movies.value = data
+                isEmpty.value = if(movieList.isEmpty()) true else false
+                movies.value = movieList
             }
-            override fun onFailure(error: String) {
-                println("llllllllllllllll failed")
+            override fun onError(e: Throwable) {
                 isLoading.value = false
                 isEmpty.value = true
             }
+            override fun onComplete() {}
         })
     }
 

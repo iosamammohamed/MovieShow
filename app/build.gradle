@@ -51,8 +51,9 @@ dependencies {
     implementation "androidx.cardview:cardview:1.0.0"
 
     //Retrofit
-    def retrofit_version = "2.7.1"
+    def retrofit_version = "2.7.2"
     implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
+    implementation "com.squareup.retrofit2:adapter-rxjava2:$retrofit_version"
     implementation 'com.squareup.retrofit2:converter-gson:2.5.0'
 
     //Room

@@ -24,21 +24,14 @@ class FavoritesViewModel (application: Application) : AndroidViewModel(applicati
 
 
     fun getAllFavorites(){
-
-        observer = object: Observer<List<Movie>>{
+        db.getAllFavorites(object: Observer<List<Movie>>{
             override fun onSubscribe(d: Disposable) {}
             override fun onNext(moviesList: List<Movie>) {
                 favMovies.value = moviesList
             }
             override fun onError(e: Throwable) {}
             override fun onComplete() {}
-
-
-        }
-
-
-        db.getAllFavorites(observer)
-
+        })
     }
 
 
