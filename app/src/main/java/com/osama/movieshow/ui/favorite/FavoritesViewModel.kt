@@ -10,7 +10,7 @@ import io.reactivex.disposables.Disposable
 
 class FavoritesViewModel (application: Application) : AndroidViewModel(application)  {
 
-    val favoritesRepository = FavoriteRepository(application)
+    private val favoritesRepository = FavoriteRepository(application)
     var favMovies: MutableLiveData<List<Movie>> = MutableLiveData()
 
 

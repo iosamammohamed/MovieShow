@@ -10,11 +10,8 @@ import io.reactivex.disposables.Disposable
 class MoviesViewModel() : ViewModel() {
 
     var url:String = ""
-        set(value){
-            field = value
-        }
 
-    val moviesRopository = MovieRepository()
+    private val moviesRopository = MovieRepository()
     var movies = MutableLiveData<List<Movie>>()
     var isLoading = MutableLiveData<Boolean>(false)
     var isEmpty = MutableLiveData<Boolean>(false)

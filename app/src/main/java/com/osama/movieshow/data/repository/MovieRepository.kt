@@ -11,7 +11,7 @@ import io.reactivex.schedulers.Schedulers
 
 class MovieRepository() {
 
-    val moviesApi = ApiClient.buildService(MovieApiInterface::class.java)
+    private val moviesApi = ApiClient.buildService(MovieApiInterface::class.java)
 
 
     fun getMovies(url:String, observer: Observer<List<Movie>>){
@@ -35,4 +35,5 @@ class MovieRepository() {
                 it.movies
             }
     }
+
 }

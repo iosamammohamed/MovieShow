@@ -15,7 +15,7 @@ import java.util.*
 
 class MoviesAdapter : RecyclerView.Adapter<MoviesAdapter.MoviesViewHolder>() {
 
-    private var data: List<Movie> = ArrayList()
+    private var data: List<Movie> = emptyList()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MoviesViewHolder {
         return MoviesViewHolder(

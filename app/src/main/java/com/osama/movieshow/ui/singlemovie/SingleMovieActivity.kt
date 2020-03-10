@@ -20,7 +20,7 @@ import kotlinx.android.synthetic.main.toolbar.view.*
 class SingleMovieActivity : AppCompatActivity() {
 
     companion object{
-        val movieTag = "movie"
+        const val movieTag = "movie"
     }
     lateinit var movie: Movie
     lateinit var viewModel:SingleMovieViewModel
@@ -32,18 +32,14 @@ class SingleMovieActivity : AppCompatActivity() {
 //        viewModel = ViewModelProviders.of(this).get(SingleMovieViewModel::class.java)
             viewModel = SingleMovieViewModel(application)
 
-        movie = intent.getParcelableExtra(movieTag)
+        movie = intent.getParcelableExtra(movieTag)!!
 
         setupToolbar()
         setupMovieData()
 
         viewModel.isFavorite(movie.id)
-        viewModel.isFav.observe(this,object: Observer<Boolean>{
-            override fun onChanged(isFav: Boolean?) {
-              changeFavIcon(isFav!!)
-            }
-
-        })
+        viewModel.isFav.observe(this,
+            Observer<Boolean> { isFav -> changeFavIcon(isFav!!) })
 
         single_movie_favorite_border.setOnClickListener { viewModel.addMovie(movie) }
         single_movie_favorite_fill.setOnClickListener {  viewModel.deleteMovie(movie) }

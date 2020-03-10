@@ -18,15 +18,11 @@ import kotlinx.android.synthetic.main.fragment_movies_pager.*
 
 class MoviesPagerFragment : Fragment() {
 
-    lateinit var moviesAdapter: MoviesViewPagerAdapter
-    val popularTitleMoviesFragment =
-        PopularMoviesFragment()
-    val latestTitleMoviesFragment =
-        LatestMoviesFragment()
-    val topRatedTitleMoviesFragment =
-        TopRatedMoviesFragment()
-    val upComingTitleMoviesFragment =
-        UpComingMoviesFragment()
+    private lateinit var moviesAdapter: MoviesViewPagerAdapter
+    private val popularTitleMoviesFragment = PopularMoviesFragment()
+    private val latestTitleMoviesFragment = LatestMoviesFragment()
+    private val topRatedTitleMoviesFragment = TopRatedMoviesFragment()
+    private val upComingTitleMoviesFragment = UpComingMoviesFragment()
 
 
 
@@ -59,9 +55,7 @@ class MoviesPagerFragment : Fragment() {
 
     class MoviesViewPagerAdapter(fragmentManager: FragmentManager) : FragmentPagerAdapter(fragmentManager, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT){
 
-        var movieFragments = ArrayList<BaseMoviesFragment>()
-
-
+        private var movieFragments = ArrayList<BaseMoviesFragment>()
 
         fun add(fragmentBase: BaseMoviesFragment){
             this.movieFragments.add(fragmentBase)

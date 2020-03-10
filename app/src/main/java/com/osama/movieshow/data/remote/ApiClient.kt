@@ -10,12 +10,11 @@ import java.util.concurrent.TimeUnit
 
 object ApiClient {
 
-    val retrofit:Retrofit
-    val movieApiInterface: MovieApiInterface
-    val okHttpClient: OkHttpClient
+    private val retrofit:Retrofit
+    private val movieApiInterface: MovieApiInterface
+    private val okHttpClient: OkHttpClient = OkHttpClient.Builder().connectTimeout(15,TimeUnit.SECONDS).build()
 
     init{
-        okHttpClient = OkHttpClient.Builder().connectTimeout(15,TimeUnit.SECONDS).build()
         retrofit = Retrofit.Builder().baseUrl(Constants.baseUrl)
                     .addConverterFactory(GsonConverterFactory.create())
                     .addCallAdapterFactory(RxJava2CallAdapterFactory.create())

@@ -14,10 +14,9 @@ import kotlinx.android.synthetic.main.item_favorite_movie.view.*
 import java.util.*
 
 
-class FavoritesAdapetr() : RecyclerView.Adapter<FavoritesAdapetr.FavoritesViewHolder>() {
+class FavoritesAdapter() : RecyclerView.Adapter<FavoritesAdapter.FavoritesViewHolder>() {
 
-    private var data: List<Movie> = ArrayList()
-
+    private var data: List<Movie> = emptyList()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FavoritesViewHolder {
         return FavoritesViewHolder(

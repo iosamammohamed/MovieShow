@@ -13,18 +13,15 @@ import kotlinx.android.synthetic.main.activity_main.*
 class MainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemSelectedListener {
 
 
-    val moviesPagerFragment = MoviesPagerFragment()
-    val favoritesFragment = FavoritesFragment()
+    private val moviesPagerFragment = MoviesPagerFragment()
+    private val favoritesFragment = FavoritesFragment()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-
         replaceFragment(moviesPagerFragment)
         bottom_nav.setOnNavigationItemSelectedListener(this)
-
-
 
     }
 

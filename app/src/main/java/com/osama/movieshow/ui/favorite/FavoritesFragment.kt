@@ -14,12 +14,8 @@ import kotlinx.android.synthetic.main.fragment_favorites.*
 
 class FavoritesFragment : Fragment() {
 
-    companion object {
-        fun newInstance() = FavoritesFragment()
-    }
-
     private lateinit var viewModel: FavoritesViewModel
-    var moviesAdapter = FavoritesAdapetr()
+    var moviesAdapter = FavoritesAdapter()
 
 
     override fun onCreateView(
@@ -37,19 +33,14 @@ class FavoritesFragment : Fragment() {
     }
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        // TODO: Use the ViewModel
 
         val recyclerViewUtils = RecyclerViewUtils()
         recyclerViewUtils.setupLinearVerticalRecView(recycler, context)
         recycler.adapter = moviesAdapter
 
 
-        viewModel.favMovies.observe(viewLifecycleOwner, object: Observer<List<Movie>> {
-            override fun onChanged(movies: List<Movie>?) {
-                moviesAdapter.setData(movies!!)
-            }
-
-        })
+        viewModel.favMovies.observe(viewLifecycleOwner,
+            Observer<List<Movie>> { movies -> moviesAdapter.setData(movies!!) })
 
     }
 

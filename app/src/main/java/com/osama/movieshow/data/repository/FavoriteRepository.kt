@@ -11,7 +11,7 @@ import io.reactivex.schedulers.Schedulers
 
 class FavoriteRepository(application: Application) {
 
-    val favoritesDao = DataBase.invoke(application).FavDao()
+    private val favoritesDao = DataBase.invoke(application).FavDao()
 
 
     fun getAllFavorites(observer: Observer<List<Movie>>){
