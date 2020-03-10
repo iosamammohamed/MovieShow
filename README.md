@@ -6,4 +6,5 @@ using some of [Android Jetpack Components](https://developer.android.com/jetpack
 Development stack: Matrial design, Retrofit, OkHttp, Room, Mvvm, LiveData, RxAndroid 
 
 Note: I'm still working on the project and not finished yet.
+
 To be added: Caching, Enhancing UI, Repository pattern
