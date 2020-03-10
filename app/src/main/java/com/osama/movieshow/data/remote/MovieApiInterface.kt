@@ -1,6 +1,7 @@
-package com.osama.movieshow.data.movie
+package com.osama.movieshow.data.remote
 
 import com.google.gson.JsonObject
+import com.osama.movieshow.data.model.movie.MovieResponse
 import com.osama.movieshow.utils.Urls
 import io.reactivex.Single
 import retrofit2.Call

@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.osama.movieshow.R
-import com.osama.movieshow.data.movie.Movie
+import com.osama.movieshow.data.model.movie.Movie
 import com.osama.movieshow.ui.singlemovie.SingleMovieActivity
 import com.osama.movieshow.utils.Urls
 import kotlinx.android.synthetic.main.item_movie.view.*

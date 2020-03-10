@@ -1,4 +1,4 @@
-package com.osama.movieshow.data.movie
+package com.osama.movieshow.data.model.movie
 
 import android.os.Parcelable
 import androidx.room.ColumnInfo

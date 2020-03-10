@@ -3,11 +3,9 @@ package com.osama.movieshow.ui.singlemovie
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
-import com.osama.movieshow.data.favorites.DataBase
-import com.osama.movieshow.data.movie.Movie
+import com.osama.movieshow.data.local.DataBase
+import com.osama.movieshow.data.model.movie.Movie
 import kotlinx.coroutines.*
-import kotlin.random.Random
 
 class SingleMovieViewModel(application: Application) : AndroidViewModel(application) {
 
@@ -20,7 +18,7 @@ class SingleMovieViewModel(application: Application) : AndroidViewModel(applicat
 
     }
 
-    fun addMovie(movie:Movie){
+    fun addMovie(movie: Movie){
         runBlocking {
             withContext(Dispatchers.IO){
                 db.FavDao().addMovie(movie)
@@ -29,7 +27,7 @@ class SingleMovieViewModel(application: Application) : AndroidViewModel(applicat
         isFavorite(movie.id)
     }
 
-    fun deleteMovie(movie:Movie){
+    fun deleteMovie(movie: Movie){
         runBlocking {
             withContext(Dispatchers.IO){
                 db.FavDao().deleteMovie(movie)

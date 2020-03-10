@@ -3,7 +3,6 @@ package com.osama.movieshow.ui.singlemovie
 import android.os.Build
 import android.os.Bundle
 import android.view.MenuItem
-import android.view.View
 import android.view.View.GONE
 import android.view.View.VISIBLE
 import androidx.annotation.RequiresApi
@@ -11,7 +10,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import com.bumptech.glide.Glide
 import com.osama.movieshow.R
-import com.osama.movieshow.data.movie.Movie
+import com.osama.movieshow.data.model.movie.Movie
 import com.osama.movieshow.utils.Urls
 import kotlinx.android.synthetic.main.activity_single_movie.*
 import kotlinx.android.synthetic.main.toolbar.*

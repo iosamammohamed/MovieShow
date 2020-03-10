@@ -8,7 +8,7 @@ import android.view.ViewGroup
 import androidx.lifecycle.Observer
 
 import com.osama.movieshow.R
-import com.osama.movieshow.data.movie.Movie
+import com.osama.movieshow.data.model.movie.Movie
 import com.osama.movieshow.utils.RecyclerViewUtils
 import kotlinx.android.synthetic.main.fragment_favorites.*
 

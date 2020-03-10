@@ -1,21 +1,18 @@
-package com.osama.movieshow.data.favorites
+package com.osama.movieshow.data.local
 
-import androidx.lifecycle.LiveData
 import androidx.room.*
-import com.osama.movieshow.data.movie.Movie
-import io.reactivex.Flowable
+import com.osama.movieshow.data.model.movie.Movie
 import io.reactivex.Observable
-import io.reactivex.Single
 
 
 @Dao
 interface FavoriteDao {
 
     @Insert
-    fun addMovie(movie:Movie)
+    fun addMovie(movie: Movie)
 
     @Delete
-    fun deleteMovie(movie:Movie):Int
+    fun deleteMovie(movie: Movie):Int
 
     @Query("Delete from favorites")
     fun deleteAllMovies():Int
