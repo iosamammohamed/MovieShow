@@ -1,6 +1,6 @@
 package com.osama.movieshow.data.remote
 
-import com.osama.movieshow.utils.Urls
+import com.osama.movieshow.utils.Constants
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
@@ -16,7 +16,7 @@ object ApiClient {
 
     init{
         okHttpClient = OkHttpClient.Builder().connectTimeout(15,TimeUnit.SECONDS).build()
-        retrofit = Retrofit.Builder().baseUrl(Urls.baseUrl)
+        retrofit = Retrofit.Builder().baseUrl(Constants.baseUrl)
                     .addConverterFactory(GsonConverterFactory.create())
                     .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                     .client(okHttpClient)

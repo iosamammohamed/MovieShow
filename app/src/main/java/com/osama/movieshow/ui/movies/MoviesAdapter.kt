@@ -9,7 +9,7 @@ import com.bumptech.glide.Glide
 import com.osama.movieshow.R
 import com.osama.movieshow.data.model.movie.Movie
 import com.osama.movieshow.ui.singlemovie.SingleMovieActivity
-import com.osama.movieshow.utils.Urls
+import com.osama.movieshow.utils.Constants
 import kotlinx.android.synthetic.main.item_movie.view.*
 import java.util.*
 
@@ -37,7 +37,7 @@ class MoviesAdapter : RecyclerView.Adapter<MoviesAdapter.MoviesViewHolder>() {
     class MoviesViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         fun bind(movie: Movie) = with(itemView) {
 
-            Glide.with(context).load(Urls.baseImageUrl + movie.posterPath).into(movie_logo)
+            Glide.with(context).load(Constants.baseImageUrl + movie.posterPath).into(movie_logo)
 
             setOnClickListener {
                 val intent = Intent(context, SingleMovieActivity::class.java)

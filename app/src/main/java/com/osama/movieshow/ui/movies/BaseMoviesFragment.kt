@@ -8,7 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProviders
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.osama.movieshow.R
@@ -18,17 +18,11 @@ import com.rockerhieu.rvadapter.states.StatesRecyclerViewAdapter
 import kotlinx.android.synthetic.main.fragment_movies.*
 
 
-/**
- * A simple [Fragment] subclass.
- */
 open class BaseMoviesFragment(val title:String, val url:String) : Fragment() {
 
     lateinit var viewModelN: MoviesViewModel
     var moviesAdapter = MoviesAdapter()
-
     val recyclerViewUtils = RecyclerViewUtils()
-
-
     lateinit private var statesRecyclerViewAdapter: StatesRecyclerViewAdapter
     lateinit private var loadingView: View
     lateinit private var emptyView: View
@@ -45,7 +39,7 @@ open class BaseMoviesFragment(val title:String, val url:String) : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        viewModelN = MoviesViewModel(activity!!.application)
+        viewModelN = ViewModelProvider(this).get(MoviesViewModel::class.java)
 
     }
 
@@ -54,13 +48,10 @@ open class BaseMoviesFragment(val title:String, val url:String) : Fragment() {
 
         setupRecycler()
         viewModelN.url = url
-
         viewModelN.getMovies()
         loadingObserve()
         dataObserve()
         emptyDataObserve()
-
-
         swipe_refresh_layout.setOnRefreshListener {
             refreshData()
         }

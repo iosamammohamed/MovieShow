@@ -11,14 +11,14 @@ import com.osama.movieshow.data.repository.MovieRepository
 import io.reactivex.Observer
 import io.reactivex.disposables.Disposable
 
-class MoviesViewModel(application: Application) : AndroidViewModel(application) {
+class MoviesViewModel() : ViewModel() {
 
     var url:String = ""
         set(value){
             field = value
         }
 
-    val moviesRopository = MovieRepository(application)
+    val moviesRopository = MovieRepository()
     var movies = MutableLiveData<List<Movie>>()
     var isLoading = MutableLiveData<Boolean>(false)
     var isEmpty = MutableLiveData<Boolean>(false)

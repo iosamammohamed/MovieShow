@@ -1,6 +1,6 @@
 package com.osama.movieshow.utils
 
-class Urls {
+class Constants {
     companion object{
         const val baseUrl = "https://api.themoviedb.org/3/";
         const val popular = "movie/popular";

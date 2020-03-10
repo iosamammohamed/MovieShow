@@ -11,7 +11,7 @@ import androidx.lifecycle.Observer
 import com.bumptech.glide.Glide
 import com.osama.movieshow.R
 import com.osama.movieshow.data.model.movie.Movie
-import com.osama.movieshow.utils.Urls
+import com.osama.movieshow.utils.Constants
 import kotlinx.android.synthetic.main.activity_single_movie.*
 import kotlinx.android.synthetic.main.toolbar.*
 import kotlinx.android.synthetic.main.toolbar.view.*
@@ -75,7 +75,7 @@ class SingleMovieActivity : AppCompatActivity() {
     }
 
     private fun setupMovieData(){
-        Glide.with(this).load(Urls.baseImageUrl + movie.posterPath).into(single_movie_poster)
+        Glide.with(this).load(Constants.baseImageUrl + movie.posterPath).into(single_movie_poster)
         single_movie_title.text = movie.title
         single_movie_overview.text = movie.overview
         single_movie_vote_average.text = "Rate: ${movie.voteAverage}"

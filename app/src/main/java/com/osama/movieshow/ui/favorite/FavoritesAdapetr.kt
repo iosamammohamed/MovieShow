@@ -9,7 +9,7 @@ import com.bumptech.glide.Glide
 import com.osama.movieshow.R
 import com.osama.movieshow.data.model.movie.Movie
 import com.osama.movieshow.ui.singlemovie.SingleMovieActivity
-import com.osama.movieshow.utils.Urls
+import com.osama.movieshow.utils.Constants
 import kotlinx.android.synthetic.main.item_favorite_movie.view.*
 import java.util.*
 
@@ -40,7 +40,7 @@ class FavoritesAdapetr() : RecyclerView.Adapter<FavoritesAdapetr.FavoritesViewHo
         fun bind(movie: Movie) = with(itemView) {
             // TODO: Bind the data with View
 
-            Glide.with(context).load(Urls.baseImageUrl + movie.posterPath).into(single_favorite_movie_img)
+            Glide.with(context).load(Constants.baseImageUrl + movie.posterPath).into(single_favorite_movie_img)
             single_favorite_movie_title.text = movie.title
             single_favorite_movie_vote_average.text = "Rate: ${movie.voteAverage}"
             single_favorite_movie_release_date.text = movie.releaseDate
