@@ -7,4 +7,4 @@ Development stack: Matrial design, Retrofit, OkHttp, Room, Mvvm, LiveData, RxAnd
 
 Note: I'm still working on the project and not finished yet.
 
-To be added: Caching, Enhancing UI, Repository pattern
+To be added: Caching, Repository pattern, Enhancing UI
