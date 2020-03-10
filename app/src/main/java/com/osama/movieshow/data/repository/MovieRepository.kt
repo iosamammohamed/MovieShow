@@ -36,4 +36,8 @@ class MovieRepository() {
             }
     }
 
+    private fun getMoviesFromCache(){
+        //To be implemented
+    }
+
 }
