@@ -16,9 +16,6 @@ import com.osama.movieshow.ui.movies.fragments.UpComingMoviesFragment
 import kotlinx.android.synthetic.main.fragment_movies_pager.*
 
 
-/**
- * A simple [Fragment] subclass.
- */
 class MoviesPagerFragment : Fragment() {
 
     lateinit var moviesAdapter: MoviesViewPagerAdapter

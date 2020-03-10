@@ -3,25 +3,20 @@ package com.osama.movieshow.ui.singlemovie
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
-import com.osama.movieshow.data.local.DataBase
 import com.osama.movieshow.data.model.movie.Movie
+import com.osama.movieshow.data.repository.FavoriteRepository
 import kotlinx.coroutines.*
 
 class SingleMovieViewModel(application: Application) : AndroidViewModel(application) {
 
-
-    private var db = DataBase.invoke(application)
+    private val favoriteRepository = FavoriteRepository(application)
     var isFav = MutableLiveData<Boolean>()
     private var existInFavorite = false
-
-    init {
-
-    }
 
     fun addMovie(movie: Movie){
         runBlocking {
             withContext(Dispatchers.IO){
-                db.FavDao().addMovie(movie)
+                favoriteRepository.addMovieToFavorites(movie)
             }
         }
         isFavorite(movie.id)
@@ -30,7 +25,7 @@ class SingleMovieViewModel(application: Application) : AndroidViewModel(applicat
     fun deleteMovie(movie: Movie){
         runBlocking {
             withContext(Dispatchers.IO){
-                db.FavDao().deleteMovie(movie)
+                favoriteRepository.deleteMovieFromFavorites(movie)
             }
         }
         isFavorite(movie.id)
@@ -39,7 +34,7 @@ class SingleMovieViewModel(application: Application) : AndroidViewModel(applicat
     fun isFavorite(id:String){
          runBlocking {
              withContext(Dispatchers.IO){
-                existInFavorite = if(db.FavDao().isFavorite(id) > 0) true else false
+                existInFavorite = if(favoriteRepository.isMovieInFavorites(id) > 0) true else false
              }
          }
          isFav.value = existInFavorite

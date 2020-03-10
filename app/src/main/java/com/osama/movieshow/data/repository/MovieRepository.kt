@@ -1,8 +1,5 @@
 package com.osama.movieshow.data.repository
 
-import android.app.Application
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import com.osama.movieshow.data.model.movie.Movie
 import com.osama.movieshow.data.remote.ApiClient
 import com.osama.movieshow.data.remote.MovieApiInterface

@@ -18,7 +18,7 @@ interface FavoriteDao {
     fun deleteAllMovies():Int
 
     @Query("select Count(*) from favorites where id = :id")
-     fun isFavorite(id: String):Int
+     fun isFavorite(id: String): Int
 
 
     @Query("select Count(*) from favorites")

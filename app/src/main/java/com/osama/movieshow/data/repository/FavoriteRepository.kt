@@ -35,4 +35,22 @@ class FavoriteRepository(application: Application) {
     }
 
 
+    fun addMovieToFavorites(movie: Movie){
+        favoritesDao.addMovie(movie)
+    }
+
+    fun deleteMovieFromFavorites(movie: Movie){
+        favoritesDao.deleteMovie(movie)
+    }
+
+
+    fun deleteAllFavorites(){
+        favoritesDao.deleteAllMovies()
+    }
+
+    fun isMovieInFavorites(id: String): Int{
+        return favoritesDao.isFavorite(id)
+    }
+
+
 }

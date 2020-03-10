@@ -1,12 +1,8 @@
 package com.osama.movieshow.ui.movies
 
-import android.app.Application
-import androidx.lifecycle.AndroidViewModel
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.osama.movieshow.data.model.movie.Movie
-import com.osama.movieshow.data.remote.ApiClient
 import com.osama.movieshow.data.repository.MovieRepository
 import io.reactivex.Observer
 import io.reactivex.disposables.Disposable

@@ -1,10 +1,8 @@
 package com.osama.movieshow.data.remote
 
-import com.google.gson.JsonObject
 import com.osama.movieshow.data.model.movie.MovieResponse
 import com.osama.movieshow.utils.Constants
 import io.reactivex.Single
-import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Path
 
