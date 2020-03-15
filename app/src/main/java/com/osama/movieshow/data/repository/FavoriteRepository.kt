@@ -2,6 +2,7 @@ package com.osama.movieshow.data.repository
 
 import android.app.Application
 import com.osama.movieshow.data.local.DataBase
+import com.osama.movieshow.data.local.FavoriteDao
 import com.osama.movieshow.data.model.movie.Movie
 import io.reactivex.Observable
 import io.reactivex.Observer
@@ -9,10 +10,7 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
 
-class FavoriteRepository(application: Application) {
-
-    private val favoritesDao = DataBase.invoke(application).FavDao()
-
+class FavoriteRepository(val favoritesDao: FavoriteDao) {
 
     fun getAllFavorites(observer: Observer<List<Movie>>){
         CompositeDisposable().add(

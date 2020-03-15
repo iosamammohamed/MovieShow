@@ -7,11 +7,10 @@ import com.osama.movieshow.data.repository.MovieRepository
 import io.reactivex.Observer
 import io.reactivex.disposables.Disposable
 
-class MoviesViewModel() : ViewModel() {
+class MoviesViewModel(val moviesRepository: MovieRepository) : ViewModel() {
 
     var url:String = ""
 
-    private val moviesRopository = MovieRepository()
     var movies = MutableLiveData<List<Movie>>()
     var isLoading = MutableLiveData<Boolean>(false)
     var isEmpty = MutableLiveData<Boolean>(false)
@@ -19,7 +18,7 @@ class MoviesViewModel() : ViewModel() {
 
     fun getMovies(){
         isLoading.value = true
-       moviesRopository.getMovies(url, object: Observer<List<Movie>>{
+        moviesRepository.getMovies(url, object: Observer<List<Movie>>{
            override fun onSubscribe(d: Disposable) {}
            override fun onNext(moviesList: List<Movie>) {
                isLoading.value = false

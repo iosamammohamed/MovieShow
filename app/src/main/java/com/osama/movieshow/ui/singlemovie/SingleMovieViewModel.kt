@@ -1,15 +1,13 @@
 package com.osama.movieshow.ui.singlemovie
 
-import android.app.Application
-import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
 import com.osama.movieshow.data.model.movie.Movie
 import com.osama.movieshow.data.repository.FavoriteRepository
 import kotlinx.coroutines.*
 
-class SingleMovieViewModel(application: Application) : AndroidViewModel(application) {
+class SingleMovieViewModel(val favoriteRepository: FavoriteRepository): ViewModel() {
 
-    private val favoriteRepository = FavoriteRepository(application)
     var isFav = MutableLiveData<Boolean>()
     private var existInFavorite = false
 

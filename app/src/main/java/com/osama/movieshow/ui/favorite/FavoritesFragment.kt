@@ -6,13 +6,21 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 
 import com.osama.movieshow.R
 import com.osama.movieshow.data.model.movie.Movie
 import com.osama.movieshow.utils.RecyclerViewUtils
 import kotlinx.android.synthetic.main.fragment_favorites.*
+import org.kodein.di.KodeinAware
+import org.kodein.di.android.x.closestKodein
+import org.kodein.di.generic.instance
 
-class FavoritesFragment : Fragment() {
+class FavoritesFragment : Fragment(), KodeinAware {
+
+    override val kodein by closestKodein()
+
+    private val favoritesViewModelFactory: FavoritesViewModelFactory by instance()
 
     private lateinit var viewModel: FavoritesViewModel
     var moviesAdapter = FavoritesAdapter()
@@ -27,7 +35,7 @@ class FavoritesFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        viewModel = FavoritesViewModel(activity!!.application)
+        viewModel = ViewModelProvider(this, favoritesViewModelFactory).get(FavoritesViewModel::class.java)
         viewModel.getAllFavorites()
 
     }

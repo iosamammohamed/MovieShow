@@ -8,6 +8,7 @@ import android.view.View.VISIBLE
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
 import com.osama.movieshow.R
 import com.osama.movieshow.data.model.movie.Movie
@@ -15,13 +16,20 @@ import com.osama.movieshow.utils.Constants
 import kotlinx.android.synthetic.main.activity_single_movie.*
 import kotlinx.android.synthetic.main.toolbar.*
 import kotlinx.android.synthetic.main.toolbar.view.*
+import org.kodein.di.KodeinAware
+import org.kodein.di.android.closestKodein
+import org.kodein.di.generic.instance
 
 
-class SingleMovieActivity : AppCompatActivity() {
+class SingleMovieActivity : AppCompatActivity(), KodeinAware {
 
     companion object{
         const val movieTag = "movie"
     }
+
+    override val kodein by closestKodein()
+    private val singleMovieViewModelFactory: SingleMovieViewModelFactory by instance()
+
     lateinit var movie: Movie
     lateinit var viewModel:SingleMovieViewModel
 
@@ -30,7 +38,7 @@ class SingleMovieActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_single_movie)
 //        viewModel = ViewModelProviders.of(this).get(SingleMovieViewModel::class.java)
-            viewModel = SingleMovieViewModel(application)
+            viewModel = ViewModelProvider(this, singleMovieViewModelFactory).get(SingleMovieViewModel::class.java)
 
         movie = intent.getParcelableExtra(movieTag)!!
 

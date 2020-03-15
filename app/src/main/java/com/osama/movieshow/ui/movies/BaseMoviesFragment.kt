@@ -13,12 +13,23 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.osama.movieshow.R
 import com.osama.movieshow.data.model.movie.Movie
+import com.osama.movieshow.data.remote.MovieApiInterface
+import com.osama.movieshow.data.repository.MovieRepository
 import com.osama.movieshow.utils.RecyclerViewUtils
 import com.rockerhieu.rvadapter.states.StatesRecyclerViewAdapter
 import kotlinx.android.synthetic.main.fragment_movies.*
+import org.kodein.di.Kodein
+import org.kodein.di.KodeinAware
+import org.kodein.di.android.x.closestKodein
+import org.kodein.di.generic.instance
 
 
-open class BaseMoviesFragment(val title:String, val url:String) : Fragment() {
+open class BaseMoviesFragment(val title:String, val url:String) : Fragment(), KodeinAware {
+
+
+    override val kodein by closestKodein()
+
+    private val moviesViewModelFactory: MoviesViewModelFactory by instance()
 
     private lateinit var viewModelN: MoviesViewModel
     private var moviesAdapter = MoviesAdapter()
@@ -37,7 +48,7 @@ open class BaseMoviesFragment(val title:String, val url:String) : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        viewModelN = ViewModelProvider(this).get(MoviesViewModel::class.java)
+        viewModelN = ViewModelProvider(this, moviesViewModelFactory).get(MoviesViewModel::class.java)
 
     }
 
@@ -111,7 +122,6 @@ open class BaseMoviesFragment(val title:String, val url:String) : Fragment() {
             useFullSpan()
         }
     }
-
 
 
 }
