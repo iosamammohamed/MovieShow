@@ -34,9 +34,15 @@ class MoviesPagerFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_movies_pager, container, false)
     }
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        initTabbedViewPager()
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        initTabbedViewPager()
+        view_pager.adapter = moviesAdapter
+        tabs.setupWithViewPager(view_pager)
     }
 
 
@@ -49,8 +55,6 @@ class MoviesPagerFragment : Fragment() {
         moviesAdapter.add(latestTitleMoviesFragment)
         moviesAdapter.add(topRatedTitleMoviesFragment)
         moviesAdapter.add(upComingTitleMoviesFragment)
-        view_pager.adapter = moviesAdapter
-        tabs.setupWithViewPager(view_pager)
     }
 
     class MoviesViewPagerAdapter(fragmentManager: FragmentManager) : FragmentPagerAdapter(fragmentManager, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT){

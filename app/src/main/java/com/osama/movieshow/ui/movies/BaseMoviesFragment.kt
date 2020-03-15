@@ -49,15 +49,14 @@ open class BaseMoviesFragment(val title:String, val url:String) : Fragment(), Ko
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         viewModelN = ViewModelProvider(this, moviesViewModelFactory).get(MoviesViewModel::class.java)
-
+        viewModelN.url = url
+        viewModelN.getMovies()
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
         setupRecycler()
-        viewModelN.url = url
-        viewModelN.getMovies()
         loadingObserve()
         dataObserve()
         emptyDataObserve()
