@@ -7,22 +7,29 @@ import androidx.lifecycle.ViewModel
 import com.osama.movieshow.data.model.movie.Movie
 import com.osama.movieshow.data.repository.FavoriteRepository
 import io.reactivex.Observer
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.disposables.Disposable
+import io.reactivex.schedulers.Schedulers
 
 class FavoritesViewModel (val favoritesRepository: FavoriteRepository): ViewModel()  {
 
     var favMovies: MutableLiveData<List<Movie>> = MutableLiveData()
+    private val compositeDisposable = CompositeDisposable()
 
 
     fun getAllFavorites(){
-        favoritesRepository.getAllFavorites(object: Observer<List<Movie>>{
-            override fun onSubscribe(d: Disposable) {}
-            override fun onNext(moviesList: List<Movie>) {
-                favMovies.value = moviesList
-            }
-            override fun onError(e: Throwable) {}
-            override fun onComplete() {}
-        })
+        compositeDisposable.add(favoritesRepository.getAllFavorites()
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe(
+                {moviesList ->
+                    favMovies.value = moviesList
+                },
+                {
+                }
+            )
+        )
     }
 
 

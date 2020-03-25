@@ -11,26 +11,14 @@ import io.reactivex.schedulers.Schedulers
 class MovieRepository(val moviesApi: MovieApiInterface) {
 
 
-    fun getMovies(url:String, observer: Observer<List<Movie>>){
-        CompositeDisposable().add(
-            getMoviesRemote(url).subscribeOn(Schedulers.io())
-            .observeOn(AndroidSchedulers.mainThread())
-            .subscribe ({
-                observer.onNext(it)
-            },{
-                observer.onError(it)
-            })
-        )
+    fun getMovies(url:String): Observable<List<Movie>>{
+        return getMoviesRemote(url)
     }
 
     private fun getMoviesRemote(url:String): Observable<List<Movie>>{
 
         return moviesApi.getMovies(url).toObservable()
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-            .map {
-                it.movies
-            }
+            .map { it.movies }
     }
 
     private fun getMoviesFromCache(){

@@ -12,24 +12,13 @@ import io.reactivex.schedulers.Schedulers
 
 class FavoriteRepository(val favoritesDao: FavoriteDao) {
 
-    fun getAllFavorites(observer: Observer<List<Movie>>){
-        CompositeDisposable().add(
-            getAllFavoritesFromCache()!!
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe {
-                    observer.onNext(it)
-                }
-        )
+    fun getAllFavorites(): Observable<List<Movie>>{
+       return getAllFavoritesFromCache()
     }
 
-    private fun getAllFavoritesFromCache(): Observable<List<Movie>>? {
+    private fun getAllFavoritesFromCache(): Observable<List<Movie>> {
             return favoritesDao.getAllFavorites()
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .map {
-                    it.reversed()
-                }
+                .map { it.reversed() }
     }
 
 
