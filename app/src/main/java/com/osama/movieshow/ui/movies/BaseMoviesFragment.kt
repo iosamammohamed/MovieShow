@@ -51,6 +51,8 @@ open class BaseMoviesFragment(val title:String, val url:String) : Fragment(), Ko
         viewModelN = ViewModelProvider(this, moviesViewModelFactory).get(MoviesViewModel::class.java)
         viewModelN.url = url
         viewModelN.getMovies()
+        println("hhhhhhhhhhhhhhhh  created again")
+
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
@@ -63,9 +65,14 @@ open class BaseMoviesFragment(val title:String, val url:String) : Fragment(), Ko
         swipe_refresh_layout.setOnRefreshListener {
             refreshData()
         }
+        println("hhhhhhhhhhhhhhhh activity created again")
 
     }
 
+    override fun onStart() {
+        super.onStart()
+        println("hhhhhhhhhhhhhhhh  started again")
+    }
 
     private fun setupRecycler(){
         recyclerViewUtils.setupStaggeredGridRecView(recycler, context)

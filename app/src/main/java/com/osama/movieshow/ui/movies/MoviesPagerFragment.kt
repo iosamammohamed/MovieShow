@@ -42,6 +42,7 @@ class MoviesPagerFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         view_pager.adapter = moviesAdapter
+        view_pager.offscreenPageLimit = 4
         tabs.setupWithViewPager(view_pager)
     }
 

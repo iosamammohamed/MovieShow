@@ -35,12 +35,12 @@ class MainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemS
     }
 
     private fun replaceFragment(fragment: Fragment){
-        supportFragmentManager.beginTransaction().replace(R.id.host_fragment, fragment).addToBackStack(null).commit()
+        supportFragmentManager.beginTransaction().replace(R.id.host_fragment, fragment).commit()
     }
 
-    override fun onBackPressed() {
+/*    override fun onBackPressed() {
         finish()
-    }
+    }*/
 
  /*   override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
